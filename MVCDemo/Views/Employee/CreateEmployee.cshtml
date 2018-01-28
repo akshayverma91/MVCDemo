@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "CreateEmployee";
+    Layout = null;
+}
+
+
+<html>
+<head>
+    <title>Create Employee</title>
+    <script>
+        function ResetForm() {
+            document.getElementById('txtFName').value = "";
+            document.getElementById('txtFLast').value = "";
+            document.getElementById('txtSalary').value = "";
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <form action="/Employee/SaveEmployee" method="post">
+            <table>
+                <tr>
+                    <td>
+                        First Name : 
+                    </td>
+                    <td>
+                        <input type="text" id="txtFName" name="FirstName" value="" /><br />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="right">
+                        @Html.ValidationMessage("FirstName")
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Last Name :
+                    </td>
+                    <td>
+                        <input type="text" id="txtFLast" name="LastName" value="" /><br />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="right">
+                        @Html.ValidationMessage("LastName")
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Salary :
+                    </td>
+                    <td>
+                        <input type="text" id="txtSalary" name="Salary" value="" /><br />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="right">
+                        @Html.ValidationMessage("Salary")
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" name="BtnSubmit" value="Save Employee" />
+                        <input type="button" name="BtnReset" value="Reset" onclick="ResetForm();" />
+                        <input type="submit" name="BtnSubmit" value="Cancel" />
+                    </td>
+                </tr>
+            </table>
+            
+        </form>
+    </div>
+</body>
+</html>
+

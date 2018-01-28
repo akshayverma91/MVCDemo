@@ -1,0 +1,86 @@
+﻿@using MVCDemo.ViewModel
+@model EmployeeListViewModel
+
+@*@model MVCDemo.Models.Employee*@
+
+@*@using MVCDemo.Models
+    @model Employee*@
+
+@*@using MVCDemo.ViewModel
+    @model EmployeeViewModel*@
+
+
+
+@{
+    Layout = null;
+    //ViewBag.Title = "My View";
+}
+
+@*<html>
+    <head>
+        <title>My View </title>
+    </head>
+    <body>
+        <h2>This is my View!!!</h2>
+    </body>
+    </html>*@
+
+@*<div>
+        @{
+            //MVCDemo.Models.Employee emp = (MVCDemo.Models.Employee)ViewData["Employee"];
+            MVCDemo.Models.Employee emp = (MVCDemo.Models.Employee)ViewBag.Employee;
+        }
+
+        <b>Employee Details</b><br />
+        Employee Name : @emp.FirstName @emp.LastName <br />
+        Employee Salary :@emp.Salary
+
+    </div>*@
+
+@*Employee Name : @Model.FirstName @Model.LastName
+    <br/>
+    Salary :
+    @if(Model.Salary>15000)
+    {
+        <span style="background-color:yellow">@Model.Salary</span>
+    }
+    else
+    {
+        <span style="background-color:green">@Model.Salary</span>
+    }*@
+
+
+@*Hello @Model.UserName
+    <hr />
+    <div>
+        <b>Employee Details</b><br />
+        Employee Name : @Model.EmployeeName<br />
+        <span style="background-color:@Model.SalaryColor">
+            Employee Salary: @Model.Salary
+    </span>
+    </div>
+*@
+
+<html>
+<head>
+    <title>My View</title>
+</head>
+<body>
+    <a href="/Employee/AddNew">Add Employee</a>
+    <div>
+        <table>
+            <tr>
+                <th>Employee Name</th>
+                <th>Salary</th>
+            </tr>
+            @foreach (EmployeeViewModel item in Model.Employees)
+            {
+                <tr>
+                    <td>@item.EmployeeName</td>
+                    <td style="background-color:@item.SalaryColor">@item.Salary</td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>
