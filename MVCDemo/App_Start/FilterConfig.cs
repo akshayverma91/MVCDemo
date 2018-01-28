@@ -7,7 +7,8 @@ namespace MVCDemo
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new HandleErrorAttribute());
+            filters.Add(new HandleErrorAttribute()); //Old Line
+            filters.Add(new AuthorizeAttribute()); //New Line
         }
     }
 }

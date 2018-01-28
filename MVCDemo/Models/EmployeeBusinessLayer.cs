@@ -47,6 +47,20 @@ namespace MVCDemo.Models
             SalesERPDAL salesDal = new SalesERPDAL();
             return salesDal.Employees.ToList();
         }
-        
+     
+   
+        public bool IsValidUser(UserDetails u)
+        {
+            if(u.UserName == "Admin" && u.Password == "Admin")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
+
+    
 }

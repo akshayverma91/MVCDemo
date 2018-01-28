@@ -10,7 +10,7 @@ namespace MVCDemo.Validation
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            if(value == null)
+            if(value == null)  //Check for Mull Value
             {
                 return new ValidationResult("Please Provide First Name");
             }

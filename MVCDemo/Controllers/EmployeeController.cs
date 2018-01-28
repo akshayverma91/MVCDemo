@@ -39,9 +39,11 @@ namespace MVCDemo.Controllers
             //}
         //    return View("MyView");
         //}
+        [Authorize]
         public ActionResult Index()
         {
             EmployeeListViewModel employeeListViewModel = new EmployeeListViewModel();
+            employeeListViewModel.UserName = User.Identity.Name;
 
             EmployeeBusinessLayer empBal = new EmployeeBusinessLayer();
             List<Employee> employees = empBal.GetEmployees();
@@ -66,9 +68,10 @@ namespace MVCDemo.Controllers
             return View("Index", employeeListViewModel);
         }
 
+        [Authorize][HttpGet]
         public ActionResult AddNew()
         {
-            return View("CreateEmployee");
+            return View("CreateEmployee", new CreateEmployeeViewModel());
         }
 
         //public string SaveEmployee(Employee e)
@@ -122,7 +125,18 @@ namespace MVCDemo.Controllers
                     }
                     else
                     {
-                        return View("CreateEmployee");
+                        CreateEmployeeViewModel vm = new CreateEmployeeViewModel();
+                        vm.FirstName = e.FirstName;
+                        vm.LastName = e.LastName;
+                        if(e.Salary != null)
+                        {
+                            vm.Salary = e.Salary.ToString();
+                        }
+                        else
+                        {
+                            vm.Salary = ModelState["Salary"].Value.AttemptedValue;
+                        }
+                        return View("CreateEmployee",vm);
                     }
                 case "Cancel":
                     return RedirectToAction("Index");
